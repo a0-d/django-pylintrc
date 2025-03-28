@@ -1,0 +1,147 @@
+# các cấu hình tuỳ chỉnh theo dự án
+ignore-patterns=
+    manage.py,
+    admin.py
+    __init__.py
+    */__init__.py
+
+[MASTER]
+# Chỉ định thư viện Django để Pylint hiểu cú pháp Django
+load-plugins=pylint_django
+
+# Thư mục chứa các module Django
+django-settings-module=your_project.settings
+
+# Đường dẫn Python để tìm các module
+python-paths=.
+
+# Xác nhận đúng các chuỗi docstring theo tiêu chuẩn Python
+init-hook='import sys; import os; from pylint.config import find_pylintrc; sys.path.append(os.path.dirname(find_pylintrc()))'
+
+[MESSAGES CONTROL]
+# Danh sách các cảnh báo bị vô hiệu hóa
+disable=C0111,  # missing-docstring
+        C0103,  # invalid-name
+        C0330,  # bad-continuation
+        C1001,  # old-style-class
+        W0611,  # unused-import
+        R0903,  # too-few-public-methods
+        R0201,  # no-self-use
+        W0212,  # protected-access
+        W0232,  # no-init
+        R0801,  # duplicate-code
+        W0622,  # redefined-builtin
+        W0614,  # wildcard-import
+        W0401,  # wildcard-import
+        W0201,  # attribute-defined-outside-init
+        W0223,  # abstract-method
+        E1101,  # no-member (thường xảy ra với các model Django)
+        W0143,  # comparison-with-callable
+
+# Các thông báo được kích hoạt
+enable=W0311,  # bad-indentation
+       W0301,  # unnecessary-semicolon
+       E0001,  # syntax-error
+
+[REPORTS]
+# Định dạng báo cáo (text, parseable, colorized, html, json)
+output-format=colorized
+
+# Số lượng tin nhắn hiển thị
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+
+# Bao gồm điểm đánh giá
+include-ids=yes
+
+# Thêm độ dài dòng tối đa
+max-line-length=100
+
+[BASIC]
+# Các tên biến chấp nhận được (regex)
+good-names=i,j,k,e,id,pk,_
+
+# Các tên hàm chấp nhận được (regex)
+function-rgx=[a-z_][a-z0-9_]{2,50}$
+
+# Các tên biến chấp nhận được (regex)
+variable-rgx=[a-z_][a-z0-9_]{0,50}$
+
+# Các tên hằng số chấp nhận được (regex)
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+
+# Tên class chấp nhận được (regex)
+class-rgx=[A-Z_][a-zA-Z0-9]+$
+
+[FORMAT]
+# Cho phép nhiều câu lệnh trên cùng một dòng
+single-line-if-stmt=yes
+
+# Số lượng dòng trắng tối đa
+max-module-lines=1000
+
+[MISCELLANEOUS]
+# Danh sách các ghi chú "TODO" để bỏ qua
+notes=FIXME,XXX,TODO
+
+[SIMILARITIES]
+# Số dòng mã giống nhau tối thiểu để báo cáo
+min-similarity-lines=5
+
+# Bỏ qua các import khi tìm kiếm mã trùng lặp
+ignore-imports=yes
+
+[TYPECHECK]
+# Danh sách các module được tạo ra động (như django.db.models)
+generated-members=REQUEST,acl_users,aq_parent,objects,DoesNotExist,id,pk,_meta,base_fields,context
+
+# Danh sách các class mà các thành viên không thể truy cập được
+ignored-classes=SQLObject,WSGIRequest,_meta
+
+# Danh sách các module đặc biệt cần xử lý riêng
+ignored-modules=
+
+[VARIABLES]
+# Danh sách các tên biến cần kiểm tra
+dummy-variables-rgx=_$|dummy
+
+# Kiểm tra biến chưa sử dụng
+init-import=no
+
+# Danh sách các biến cục bộ hợp lệ
+additional-builtins=
+
+[CLASSES]
+# Danh sách các phương thức đặc biệt
+defining-attr-methods=__init__,__new__,setUp
+
+# Danh sách các phương thức quan trọng
+valid-classmethod-first-arg=cls
+
+# Danh sách các phương thức cần định nghĩa trong class
+required-attributes=
+
+[DESIGN]
+# Số lượng tham số tối đa cho phương thức
+max-args=10
+
+# Số lượng biến cục bộ tối đa
+max-locals=25
+
+# Độ phức tạp McCabe tối đa
+max-complexity=10
+
+# Số lượng phương thức public tối đa
+max-public-methods=50
+
+# Số lượng thuộc tính tối đa cho mỗi class
+max-attributes=20
+
+# Số lượng phương thức tối đa cho mỗi class
+max-methods=40
+
+[IMPORTS]
+# Danh sách các thư viện không nên sử dụng (obsolete)
+deprecated-modules=regsub,TERMIOS,Bastion,rexec
+
+# Danh sách các thư viện nên tránh
+analyse-fallback-blocks=no
